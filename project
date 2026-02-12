@@ -1,0 +1,19 @@
+ansible-webapp/
+├── inventories/
+│   └── prod/
+│       └── hosts.yml
+├── roles/
+│   └── webserver/
+│       ├── tasks/
+│       │   └── main.yml
+│       ├── handlers/
+│       │   └── main.yml
+│       ├── templates/
+│       │   └── index.html.j2
+│       └── vars/
+│           └── main.yml
+├── group_vars/
+│   └── prod/
+│       └── vault.yml
+├── site.yml
+

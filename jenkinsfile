@@ -1,0 +1,27 @@
+pipeline {
+  agent any
+  stages {
+    stage('Checkout') {
+      steps {
+        git 'https://github.com/loke815/ansible-practice.git'
+      }
+    }
+
+    stage('Install Dependencies') {
+      steps {
+        sh 'ansible-galaxy install -r requirements.yml || true'
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        sh '''
+        ansible-playbook \
+        -i inventories/prod/hosts.yml \
+        site.yml \
+        --vault-password-file /var/lib/jenkins/vault_pass.txt
+        '''
+      }
+    }
+  }
+}
